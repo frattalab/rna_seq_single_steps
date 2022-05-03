@@ -16,6 +16,7 @@ rule salmon_index:
         directory(output_index_dir)
     params:
         threads = threads
+    conda: "../envs/single_steps.yaml"
     shell:
         """
         /SAN/vyplab/alb_projects/tools/salmon-latest_linux_x86_64/bin/salmon index \
