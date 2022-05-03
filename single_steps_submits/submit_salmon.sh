@@ -25,6 +25,7 @@ cp single_steps/sort_pull.smk $WRITEFOLDER/sort_pull.smk
 snakemake -s single_steps/salmon.smk \
 --jobscript cluster_qsub.sh \
 --cluster-config config/cluster.yaml \
+--use-conda \
 --cluster-sync "qsub -l tmem={cluster.tmem},h_vmem={cluster.h_vmem},h_rt={cluster.h_rt} -o $FOLDER {cluster.submission_string}" \
 -j 40 \
 --nolock \
