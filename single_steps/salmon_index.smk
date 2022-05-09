@@ -5,7 +5,7 @@ configfile: "config/salmon_config.yaml"
 #########---------------
 config_path = "config/salmon_config.yaml" # this is for copying later
 
-transcripts = config["transcripts"]
+transcripts = config["transcripts_fasta"]
 threads = config["threads"]
 output_index_dir = config["salmon_index_dir"]
 
