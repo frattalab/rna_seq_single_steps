@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
     help = """python combine_stats_sn_tables.py INPUT_DIR FILE_SUFFIX OUT_FILE
               INPUT_DIR - path to input directory containing 'SN' samtools stats sections to combine
-              FILE_SUFFIX - string suffix to identify files containing 'SN' samtools stats output for a given file
+              FILE_SUFFIX - string suffix to identify files containing 'SN' samtools stats output for a given file (i.e. output extracted with grep ^SN <samtools_stats.txt> | cut -f 2-)
               OUT_FILE - name of output table of combined SN outputs for all identified files
              """
 

@@ -49,10 +49,12 @@ Cluster config file: `config/cluster/sort_pull.yaml`
 
 ### Generate summary statistics from BAM files with samtools stats
 
-Runs samtools stats over a set of input BAM files. Also collapses the 'summary/SN section' into a single summary table for all samples (requires pandas to be installed outside of pipeline, which is usually satisfied by a snakemake installation). See [documentation](http://www.htslib.org/doc/samtools-stats.html) for a full breakdown/description of calculated metrics.
+Runs `samtools stats over a set of input BAM files`. Also collapses the 'summary/SN section' into a single summary table for all samples. See [documentation](http://www.htslib.org/doc/samtools-stats.html) for a full breakdown/description of calculated metrics.
 
 Snakefile: `single_steps/samtools_stats.smk`
 
 Config file: `config/samtools_stats_config.yaml`
 
 Cluster config file: `config/cluster/samtools_stats.yaml`
+
+Note: Requires pandas to be installed outside of pipeline, which is usually satisfied by a standard snakemake installation.
