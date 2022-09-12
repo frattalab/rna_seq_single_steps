@@ -31,8 +31,8 @@ wildcard_constraints:
 
 rule all:
     input:
-        # summary_out,
-        expand(os.path.join(out_dir, "{sample}.samtools_stats.txt"), sample=SAMPLES)
+        summary_out,
+        # expand(os.path.join(out_dir, "{sample}.samtools_stats.txt"), sample=SAMPLES)
 
 
 rule samtools_stats:
@@ -61,4 +61,44 @@ rule samtools_stats:
         --threads {params.extra_threads} \
         {params.rm_overlaps} \
         {input} > {output} 2> {log}
+        """
+
+
+rule extract_sn_section:
+    input:
+        rules.samtools_stats.output
+
+    output:
+        temp(os.path.join(out_dir, "{sample}.sn_stats.txt"))
+
+    log:
+        os.path.join(log_dir, "{sample}.extract_sn_section.log")
+
+    shell:
+        """
+        grep ^SN {input} | cut -f 2- > {output} 2> {log}
+        """
+
+
+rule sn_summary_table:
+    input:
+        expand(os.path.join(out_dir, "{sample}.sn_stats.txt"), sample=SAMPLES)
+
+    output:
+        summary_out
+
+    params:
+        script = "scripts/combine_stats_sn_tables.py",
+        input_dir = out_dir,
+        sn_suffix = ".sn_stats.txt"
+
+    log:
+        os.path.join(log_dir, "sn_summary_table.log")
+
+    shell:
+        """
+        python {params.script} \
+        {params.input_dir} \
+        {params.sn_suffix} \
+        {output} &> {log}
         """
