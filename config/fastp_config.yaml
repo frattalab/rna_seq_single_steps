@@ -5,3 +5,18 @@ sampleCSVpath: /SAN/vyplab/alb_projects/data/4su_better_design_ward_ipsc/foursu_
 fastp_path: /SAN/vyplab/alb_projects/tools/fastp
 
 end_type: pe
+
+
+#quality trimming is debated, and harsh cutoff can effect expression, using a soft quality trim of 10 based on this paper
+#https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-0956-2
+#use this flag if there are UMI's present, if there are, there should be a file with fastq & umi fastq present, otherwise
+#additional parameters you might want to add on
+fastp_parameters:
+  qualified_quality_phred: 10
+  overrepresentation_analysis: ""
+  #use this flag if there are UMI's present, if there are, there should be a file with fastq & umi fastq present, otherwise
+  #leave this flag as an empty string: ""
+  #umi: ""
+  #umi_loc: /SAN/vyplab/IoN_RNAseq/Bilal_Muscle_biopsies/analysis/fastqc/
+
+
