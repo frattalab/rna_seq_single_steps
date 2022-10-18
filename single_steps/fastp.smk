@@ -1,5 +1,6 @@
-configfile: "config/fastp_config.yaml"
 
+configfile: "config/fastp_config.yaml"
+include: "helpers.py"
 
 #get output folders
 fastp_outdir = get_output_dir(config['project_top_level'], config["fastp_trimmed_output_folder"])
