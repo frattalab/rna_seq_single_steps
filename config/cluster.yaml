@@ -24,10 +24,6 @@ multiqc:
     h_vmem:    4G
     tmem:   4G
     h_rt: 72:00:00
-fastp_trimming:
-    h_vmem:    4G
-    tmem:   4G
-    h_rt: 72:00:00
 run_star_pe:
     submission_string: "-pe smp 4 -R y"
     h_vmem:   8G
@@ -62,10 +58,6 @@ interleave_fastqs:
     tmem:   8G
     h_rt: 72:00:00
 subsample_fastqs:
-    h_vmem:   8G
-    tmem:   8G
-    h_rt: 72:00:00
-fastp_trimming:
     h_vmem:   8G
     tmem:   8G
     h_rt: 72:00:00
@@ -158,3 +150,7 @@ generate_full_decoys:
     h_vmem:   10G
     tmem:   10G
     h_rt: 24:00:00
+fastp_trimming:
+    h_vmem:    8G
+    tmem:   8G
+    h_rt: 08:00:00
