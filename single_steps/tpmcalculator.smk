@@ -10,10 +10,10 @@ import os
 project_folder = config["project_top_level"]
 end_type = config["end_type"]
 suffix = config["suffix"]
-bam_subfolder = config['bam_subfolder']
+bam_folder = project_folder + config['bam_subfolder']
 tpm_output_folder = project_folder + config["tpmcalculator_output_folder"]
 REFERENCE_ANNOTATION = config["reference_gtf"]
-SAMPLE_NAMES, = glob_wildcards(star_output_folder + "{sample}" + suffix + ".bam")
+SAMPLE_NAMES, = glob_wildcards(bam_folder + "{sample}" + suffix + ".bam")
 
 print(SAMPLE_NAMES)
 
@@ -31,8 +31,8 @@ rule tpmcounts:
 
 rule tpmcalculator_path:
     input:
-        aligned_bam = star_output_folder + "{name}" + suffix + ".bam",
-        aligned_bai = star_output_folder + "{name}" + suffix + ".bam.bai"
+        aligned_bam = bam_folder + "{name}" + suffix + ".bam",
+        aligned_bai = bam_folder + "{name}" + suffix + ".bam.bai"
     output:
         tpm_output_folder + "{name}" + suffix + "_genes.out"
     params:
