@@ -1,0 +1,6 @@
+project_folder: /SAN/vyplab/TDP43_RNA/IPSC_WARD_RIBOSEQ/
+bam_subfolder: bams/
+suffix: ".readlen_filtered.bam"
+end_type: se
+tpmcalculator_output_folder: TPMcalculator/
+reference_gtf: /SAN/vyplab/vyplab_reference_genomes/annotation/human/GRCh38/gencode.v40.annotation.gtf
